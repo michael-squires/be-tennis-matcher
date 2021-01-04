@@ -1,0 +1,25 @@
+{
+  "name": "be-tennis-matcher",
+  "description": "",
+  "version": "1.0.0",
+  "main": "knexfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-squires/be-tennis-matcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michael-squires/be-tennis-matcher/issues"
+  },
+  "homepage": "https://github.com/michael-squires/be-tennis-matcher#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.15",
+    "pg": "^8.5.1"
+  }
+}
