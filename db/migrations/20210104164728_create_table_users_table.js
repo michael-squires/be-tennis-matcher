@@ -7,7 +7,7 @@ exports.up = function (knex) {
         usersTable.text("last_name").notNullable;
         usersTable.float("latitude").notNullable;
         usersTable.float("longitude").notNullable;
-        usersTable.integer("date_of_birth").notNullable;
+        usersTable.text("date_of_birth").notNullable;
         usersTable.text("gender")
         usersTable.text("ability").notNullable;
         usersTable.text("playing_hand").notNullable;
@@ -39,8 +39,8 @@ exports.up = function (knex) {
         usersTable.text("min_ability")
         usersTable.text("max_ability")
         usersTable.text("hand_preference")
-        usersTable.integer("min_age")
-        usersTable.integer("max_age")
+        usersTable.integer("min_age").default(18);
+        usersTable.integer("max_age").default(100);
         usersTable.text("gender_preference")
     });
 };

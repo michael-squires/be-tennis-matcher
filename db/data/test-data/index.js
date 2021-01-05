@@ -1,14 +1,7 @@
-let csvToJson = require('convert-csv-to-json');
+const usersData = require("./Tennis Match Test Users");
 
-let fileInputName = 'Tennis Match Test Users.csv'; 
-let fileOutputName = 'Tennis Match Test Users.json';
+console.log('usersData in test-data index.js', usersData)
 
-csvToJson.fieldDelimiter(',').generateJsonFileFromCsv(fileInputName,fileOutputName);
-
-// let csvToJson = require('convert-csv-to-json');
-
-// let json = csvToJson.fieldDelimiter(',').getJsonFromCsv('Tennis Match Test.csv');
-
-// for(let i=0; i<json.length;i++){
-//     console.log(json[i]);
-// }
+module.exports = {
+    usersData,
+};
