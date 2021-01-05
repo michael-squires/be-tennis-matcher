@@ -51,6 +51,37 @@ describe("/users", () => {
           expect(body.users.length).toBe(13);
         });
     });
+    test('should filter by mon_morn availability if this query is added', () => {
+      return request(app)
+        .get("/users?mon_morn=true")
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.users).toEqual(expect.any(Array));
+          expect(body.users.every(({ mon_morn }) => (mon_morn))).toBe(true)
+          expect(body.users.length).toBe(9);
+        });
+    });
+    test('should filter by mon_morn or sat_morn availability if this query is added', () => {
+      return request(app)
+        .get("/users?mon_morn=true&&sat_morn=true")
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.users).toEqual(expect.any(Array));
+          expect(body.users.every(({ mon_morn, sat_morn }) => (mon_morn || sat_morn))).toBe(true)
+          expect(body.users.length).toBe(9);
+        });
+    });
+    test('should filter by mon_morn availability if this query is added', () => {
+      return request(app)
+        .get("/users?availability=[15,1,6]")
+        .expect(200)
+        .then(({ body }) => {
+          console.log(body.users.availability)
+          expect(body.users).toEqual(expect.any(Array));
+          expect(body.users.every(({ mon_morn }) => (mon_morn))).toBe(true)
+          expect(body.users.length).toBe(9);
+        });
+    });
   });
 });
 
