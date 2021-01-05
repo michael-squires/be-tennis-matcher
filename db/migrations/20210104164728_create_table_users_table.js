@@ -9,7 +9,7 @@ exports.up = function (knex) {
         usersTable.float("longitude").notNullable;
         usersTable.text("date_of_birth").notNullable;
         usersTable.text("gender")
-        usersTable.text("ability").notNullable;
+        usersTable.integer("ability").notNullable;
         usersTable.text("playing_hand").notNullable;
         usersTable.text("club_membership").notNullable;
         usersTable.boolean("mon_morn").notNullable;
