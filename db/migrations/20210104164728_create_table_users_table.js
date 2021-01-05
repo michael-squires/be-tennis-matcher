@@ -1,7 +1,7 @@
 
 exports.up = function (knex) {
     return knex.schema.createTable("users", (usersTable) => {
-        usersTable.increments("userID").primary();
+        usersTable.increments("user_id").primary();
         usersTable.text("username").notNullable;
         usersTable.text("first_name").notNullable;
         usersTable.text("last_name").notNullable;

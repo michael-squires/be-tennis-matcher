@@ -1,7 +1,5 @@
-
 module.exports = [
     {
-        "club_id": "",
         "club_name": "Leeds University Union Tennis Club",
         "longitude": "-1.553329",
         "latitude": "53.807958",
@@ -9,7 +7,6 @@ module.exports = [
         "address": "\"The Edge"
     },
     {
-        "club_id": "",
         "club_name": "Chapel Allerton Lawn Tennis and Squash Club",
         "longitude": "-1.541419",
         "latitude": "53.829296",
@@ -17,7 +14,6 @@ module.exports = [
         "address": "\"Wensley Avenue"
     },
     {
-        "club_id": "",
         "club_name": "Georgian Tennis Club",
         "longitude": "-1.532312",
         "latitude": "53.825738",
@@ -25,7 +21,6 @@ module.exports = [
         "address": "\"King George Avenue"
     },
     {
-        "club_id": "",
         "club_name": "Armley Tennis Club",
         "longitude": "-1.606207",
         "latitude": "53.802913",
@@ -33,7 +28,6 @@ module.exports = [
         "address": "\"The Pavilion"
     },
     {
-        "club_id": "",
         "club_name": "St Chads Tennis Club (Leeds)",
         "longitude": "-1.58458",
         "latitude": "53.828507",
@@ -41,7 +35,6 @@ module.exports = [
         "address": "\"Church Drive"
     },
     {
-        "club_id": "",
         "club_name": "Kirkstall Abbey Tennis Club",
         "longitude": "-1.607089",
         "latitude": "53.822213",
@@ -49,7 +42,6 @@ module.exports = [
         "address": "\"Kirkstall Abbey Grounds"
     },
     {
-        "club_id": "",
         "club_name": "Roundhay Tennis Club Ltd",
         "longitude": "-1.508963",
         "latitude": "53.842551",
@@ -57,7 +49,6 @@ module.exports = [
         "address": "\"Shaftesbury Avenue"
     },
     {
-        "club_id": "",
         "club_name": "Horsforth Throstle Nest Tennis Club",
         "longitude": "-1.636481",
         "latitude": "53.831239",
@@ -65,7 +56,6 @@ module.exports = [
         "address": "\"New Road Side"
     },
     {
-        "club_id": "",
         "club_name": "Pudsey Lawn Tennis Club",
         "longitude": "-1.665667",
         "latitude": "53.795103",
@@ -73,7 +63,6 @@ module.exports = [
         "address": "\"Tofts Road"
     },
     {
-        "club_id": "",
         "club_name": "Rawdon Golf & Lawn Tennis Club ",
         "longitude": "-1.689296",
         "latitude": "53.850223",

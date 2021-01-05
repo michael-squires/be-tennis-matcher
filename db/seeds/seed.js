@@ -1,4 +1,4 @@
-const { usersData } = require('../data/index.js')
+const { usersData, clubsData } = require('../data/index.js')
 
 exports.seed = function (knex) {
     return knex.migrate
@@ -10,6 +10,6 @@ exports.seed = function (knex) {
             return Promise.all([
                 knex.insert(usersData).into('users').returning('*'),
                 knex.insert(clubsData).into('clubs').returning('*'),
-            ])           
+            ])
         })
 }
