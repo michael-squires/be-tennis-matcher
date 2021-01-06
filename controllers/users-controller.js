@@ -23,6 +23,13 @@ exports.getCurrentUser = (req, res, next) => {
 exports.postNewUser = (req, res, next) => {
     createNewUser(req.body)
     .then((newUser) => {
-        res.status(201).send({ newUser })
+        res.status(201).send(newUser[0])
     })
 }
+
+// exports.patchCurrentUser = (req, res, next) => {
+//     updateCurrentUser(req.body.)
+//     .then((newUser) => {
+//         res.status(201).send(newUser[0])
+//     })
+// }

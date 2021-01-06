@@ -39,8 +39,8 @@ exports.up = function (knex) {
         usersTable.text("description")
         usersTable.text("photo").notNullable;
         usersTable.integer("distance").default(10);
-        usersTable.text("min_ability")
-        usersTable.text("max_ability")
+        usersTable.integer("min_ability")
+        usersTable.integer("max_ability")
         usersTable.text("hand_preference")
         usersTable.integer("min_age").default(18);
         usersTable.integer("max_age").default(100);
