@@ -51,3 +51,12 @@ exports.createNewUser = (newUser) => {
         .into("users")
         .returning("*")
 }
+
+
+//, max_ability, hand_preference, min_age, max_age, gender_preference
+exports.updateCurrentUser = (username, distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference) => {
+    return connection("users")
+      .where({ username })
+      .update({distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference})
+      .returning("*");
+}

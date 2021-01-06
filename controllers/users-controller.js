@@ -1,4 +1,4 @@
-const { fetchUsers, fetchCurrentUser, createNewUser } = require("../models/users-model")
+const { fetchUsers, fetchCurrentUser, createNewUser, updateCurrentUser } = require("../models/users-model")
 const { filterByDistance } = require('../db/utils/data-manipulation')
 
 exports.getUsers = (req, res, next) => {
@@ -28,8 +28,10 @@ exports.postNewUser = (req, res, next) => {
 }
 
 exports.patchCurrentUser = (req, res, next) => {
-    updateCurrentUser(req.body.)
-    .then((newUser) => {
-        res.status(201).send(newUser[0])
+    username = req.params.username
+    const {distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference} = req.body
+    updateCurrentUser(username, distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference)
+    .then((currentUser) => {
+        res.status(201).send(currentUser[0])
     })
 }
