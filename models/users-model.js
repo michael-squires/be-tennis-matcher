@@ -1,6 +1,7 @@
 const connection = require("../db/data/connection");
+const { use } = require("../routers/usersRouter");
 
-exports.fetchUsers = ({ availability, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends }) => {
+exports.fetchUsers = ({ gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends }) => {
     return connection
         .select("*")
         .from("users")
@@ -35,4 +36,18 @@ exports.fetchUsers = ({ availability, gender, playing_hand, min_ability, max_abi
             // if (sun_aft) query.where('users.sun_aft', '=', sun_aft)
             // if (sun_eve) query.where('users.sun_eve', '=', sun_eve)
         })
+}
+
+exports.fetchCurrentUser = (username) => {
+    return connection
+        .select("*")
+        .from("users")
+        .where({username})
+}
+
+exports.createNewUser = (newUser) => {
+    return connection
+        .insert(newUser)
+        .into("users")
+        .returning("*")
 }

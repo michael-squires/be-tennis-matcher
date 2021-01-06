@@ -11,7 +11,7 @@ exports.up = function (knex) {
         usersTable.text("gender")
         usersTable.integer("ability").notNullable;
         usersTable.text("playing_hand").notNullable;
-        usersTable.text("club_membership").notNullable;
+        usersTable.text("club_membership")
         usersTable.boolean("weekday_daytime")
         usersTable.boolean("weekday_evening")
         usersTable.boolean("weekends")
