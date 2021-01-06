@@ -15,7 +15,7 @@ describe("/users", () => {
         .then(({ body }) => {
           expect(body.users).toEqual(expect.any(Array));
           expect(Object.keys(body.users[0])).toEqual(
-            expect.arrayContaining(["user_id", "username", "first_name", "last_name", "latitude", "longitude", "date_of_birth", "gender", "ability", "playing_hand", "club_membership", "mon_morn", "mon_aft", "mon_eve", "tues_morn", "tues_aft", "tues_eve", "wed_morn", "wed_aft", "wed_eve", "thurs_morn", "thurs_aft", "thurs_eve", "fri_morn", "fri_aft", "fri_eve", "sat_morn", "sat_aft", "sat_eve", "sun_morn", "sun_aft", "sun_eve", "description", "photo", "distance", "min_ability", "max_ability", "hand_preference", "min_age", "max_age", "gender_preference"
+            expect.arrayContaining(["user_id", "username", "first_name", "last_name", "latitude", "longitude", "date_of_birth", "gender", "ability", "playing_hand", "club_membership", "weekday_daytime", "weekday_evening", "weekends", "description", "photo", "distance", "min_ability", "max_ability", "hand_preference", "min_age", "max_age", "gender_preference"
             ])
           );
           expect(body.users.length).toBe(20);
@@ -51,34 +51,31 @@ describe("/users", () => {
           expect(body.users.length).toBe(13);
         });
     });
-    test('should filter by mon_morn availability if this query is added', () => {
+    test('should filter by weekday evening availability if this query is added', () => {
       return request(app)
-        .get("/users?mon_morn=true")
+        .get("/users?weekday_evening=true")
         .expect(200)
         .then(({ body }) => {
           expect(body.users).toEqual(expect.any(Array));
-          expect(body.users.every(({ mon_morn }) => (mon_morn))).toBe(true)
+          expect(body.users.every(({ weekday_evening }) => (weekday_evening))).toBe(true)
+          expect(body.users.length).toBe(6);
+        });
+    });
+    test('should filter by distance if distance query exists', () => {
+      return request(app)
+        .get("/users?distance=1&&latitude=53.796305&&longitude=-1.564126")
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.users).toEqual(expect.any(Array));
           expect(body.users.length).toBe(9);
         });
     });
-    test('should filter by mon_morn or sat_morn availability if this query is added', () => {
+    test('should filter by minAge/ maxAge if those queries exist', () => {
       return request(app)
-        .get("/users?mon_morn=true&&sat_morn=true")
+        .get("/users?min_age=25&&max_age=40")
         .expect(200)
         .then(({ body }) => {
           expect(body.users).toEqual(expect.any(Array));
-          expect(body.users.every(({ mon_morn, sat_morn }) => (mon_morn || sat_morn))).toBe(true)
-          expect(body.users.length).toBe(9);
-        });
-    });
-    test('should filter by mon_morn availability if this query is added', () => {
-      return request(app)
-        .get("/users?availability=[15,1,6]")
-        .expect(200)
-        .then(({ body }) => {
-          console.log(body.users.availability)
-          expect(body.users).toEqual(expect.any(Array));
-          expect(body.users.every(({ mon_morn }) => (mon_morn))).toBe(true)
           expect(body.users.length).toBe(9);
         });
     });
