@@ -20,16 +20,15 @@ exports.filterByDistance = (lat1, lon1, lat2, lon2, maxDistance) => {
     return (dist < maxDistance)
 }
 
-exports.getAge = (dateString) => {
+exports.filterByAge = (dateString, min_age, max_age) => {
     const today = new Date();
     const year = dateString.slice(0, 4)
     const month = dateString.slice(4, 6) - 1
     const day = dateString.slice(6)
     let age = today.getFullYear() - year;
     let m = today.getMonth() - month;
-    console.log('m', m)
     if (m < 0 || (m === 0 && today.getDay() < day)) {
         age--;
     }
-    return age;
+    return (age >= min_age) && (age <= max_age);
 }

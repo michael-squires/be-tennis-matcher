@@ -1,4 +1,4 @@
-const { filterByDistance, getAge } = require('../db/utils/data-manipulation')
+const { filterByDistance, filterByAge } = require('../db/utils/data-manipulation')
 
 describe('distance filter', () => {
     test('should return true if geolocations within specified distance', () => {
@@ -9,9 +9,9 @@ describe('distance filter', () => {
     });
 });
 
-describe('GetAge returns age for a date provided as YYYYMMDD string', () => {
-    test('should return correct age for a given date', () => {
-        expect(getAge('19800930')).toBe(40)
-        expect(getAge('20000101')).toBe(21)
+describe('filterByAge returns age for a date provided as YYYYMMDD string and compares it against a minimum and a maximum age', () => {
+    test('should return true for a datestring between a minimum and a maximum age and false otherwise', () => {
+        expect(filterByAge('19800930', 35, 45)).toBe(true)
+        expect(filterByAge('20000101', 35, 45)).toBe(false)
     });
 });
