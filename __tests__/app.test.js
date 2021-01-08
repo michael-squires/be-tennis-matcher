@@ -101,7 +101,6 @@ describe("/users", () => {
           expect(body.weekday_evening).toBe(false)
           expect(body.weekends).toBe(false)
           expect(body.description).toBe("Tennis is mostly mental. Of course you must have a lot of physical skill but you can't play tennis well and not be a good thinker. You win or lose the match before you even go out there. Venus Williams")
-          expect(body.photo).toBe("placeholder")
           expect(body.distance).toBe(10)
           expect(body.min_ability).toBe(0)
           expect(body.max_ability).toBe(0)
@@ -132,7 +131,6 @@ describe("/users", () => {
           weekday_evening: true,
           weekends: false,
           description: "I have just started playing tennis and am looking for new partners in the area",
-          photo: "placeholder",
           distance: 20,
           min_ability: 1,
           max_ability: 1,
@@ -157,7 +155,6 @@ describe("/users", () => {
           expect(body.weekday_evening).toBe(true)
           expect(body.weekends).toBe(false)
           expect(body.description).toBe("I have just started playing tennis and am looking for new partners in the area")
-          expect(body.photo).toBe("placeholder")
           expect(body.distance).toBe(20)
           expect(body.min_ability).toBe(1)
           expect(body.max_ability).toBe(1)
@@ -173,7 +170,7 @@ describe("/users", () => {
     test("Patch responds with 201 when the preferences for a specific username are updated", () => {
       return request(app)
         .patch("/users/martina.hingis@yahoo.co.uk")
-        .send({distance: 15, min_ability: 1, max_ability: 2, hand_preference: "left-handed", min_age: 24, max_age: 46, gender_preference: "f"})
+        .send({ distance: 15, min_ability: 1, max_ability: 2, hand_preference: "left-handed", min_age: 24, max_age: 46, gender_preference: "f" })
         .expect(201)
         .then(({ body }) => {
           expect(body.distance).toBe(15)

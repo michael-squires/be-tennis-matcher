@@ -37,7 +37,6 @@ exports.up = function (knex) {
         // usersTable.boolean("sun_aft").notNullable;
         // usersTable.boolean("sun_eve").notNullable;
         usersTable.text("description")
-        usersTable.text("photo").notNullable;
         usersTable.integer("distance").default(10);
         usersTable.integer("min_ability")
         usersTable.integer("max_ability")
