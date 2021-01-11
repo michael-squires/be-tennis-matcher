@@ -5,6 +5,7 @@ exports.up = function (knex) {
         usersTable.text("username").notNullable;
         usersTable.text("first_name").notNullable;
         usersTable.text("last_name").notNullable;
+        usersTable.text("image_url").notNullable;
         usersTable.float("latitude").notNullable;
         usersTable.float("longitude").notNullable;
         usersTable.text("date_of_birth").notNullable;

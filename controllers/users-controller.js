@@ -2,8 +2,8 @@ const { fetchUsers, fetchCurrentUser, createNewUser, updateCurrentUser } = requi
 const { filterByDistance, filterByAge } = require('../db/utils/data-manipulation')
 
 exports.getUsers = (req, res, next) => {
-    const { gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends, distance, latitude, longitude, min_age, max_age } = req.query
-    fetchUsers({ gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends })
+    const { username, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends, distance, latitude, longitude, min_age, max_age } = req.query
+    fetchUsers({ username, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends })
         .then((users) => {
             if (distance) {
                 users = users.filter(user => filterByDistance(latitude, longitude, user.latitude, user.longitude, distance))
@@ -25,16 +25,16 @@ exports.getCurrentUser = (req, res, next) => {
 
 exports.postNewUser = (req, res, next) => {
     createNewUser(req.body)
-    .then((newUser) => {
-        res.status(201).send(newUser[0])
-    })
+        .then((newUser) => {
+            res.status(201).send(newUser[0])
+        })
 }
 
 exports.patchCurrentUser = (req, res, next) => {
     username = req.params.username
-    const {distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference} = req.body
+    const { distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference } = req.body
     updateCurrentUser(username, distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference)
-    .then((currentUser) => {
-        res.status(201).send(currentUser[0])
-    })
+        .then((currentUser) => {
+            res.status(201).send(currentUser[0])
+        })
 }

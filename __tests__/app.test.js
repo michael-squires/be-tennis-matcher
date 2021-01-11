@@ -15,10 +15,18 @@ describe("/users", () => {
         .then(({ body }) => {
           expect(body.users).toEqual(expect.any(Array));
           expect(Object.keys(body.users[0])).toEqual(
-            expect.arrayContaining(["user_id", "username", "first_name", "last_name", "latitude", "longitude", "date_of_birth", "gender", "ability", "playing_hand", "club_membership", "weekday_daytime", "weekday_evening", "weekends", "description", "photo", "distance", "min_ability", "max_ability", "hand_preference", "min_age", "max_age", "gender_preference"
+            expect.arrayContaining(["user_id", "username", "first_name", "last_name", "image_url", "latitude", "longitude", "date_of_birth", "gender", "ability", "playing_hand", "club_membership", "weekday_daytime", "weekday_evening", "weekends", "description", "distance", "min_ability", "max_ability", "hand_preference", "min_age", "max_age", "gender_preference"
             ])
           );
           expect(body.users.length).toBe(20);
+        });
+    });
+    test("should not return the details of the user whose username is added to the query", () => {
+      return request(app)
+        .get("/users?username=martina.hingis@yahoo.co.uk")
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.users.length).toBe(19);
         });
     });
     test('should filter by gender if gender query added', () => {
@@ -102,8 +110,8 @@ describe("/users", () => {
           expect(body.weekends).toBe(false)
           expect(body.description).toBe("Tennis is mostly mental. Of course you must have a lot of physical skill but you can't play tennis well and not be a good thinker. You win or lose the match before you even go out there. Venus Williams")
           expect(body.distance).toBe(10)
-          expect(body.min_ability).toBe(0)
-          expect(body.max_ability).toBe(0)
+          expect(body.min_ability).toBe(1)
+          expect(body.max_ability).toBe(3)
           expect(body.hand_preference).toBe("")
           expect(body.min_age).toBe(18)
           expect(body.max_age).toBe(100)

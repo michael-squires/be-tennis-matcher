@@ -1,7 +1,7 @@
 const connection = require("../db/data/connection");
 const { use } = require("../routers/usersRouter");
 
-exports.fetchUsers = ({ gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends }) => {
+exports.fetchUsers = ({ username, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends }) => {
     return connection
         .select("*")
         .from("users")
@@ -13,7 +13,7 @@ exports.fetchUsers = ({ gender, playing_hand, min_ability, max_ability, weekday_
             if (weekday_daytime) query.where('users.weekday_daytime', '=', weekday_daytime)
             if (weekday_evening) query.where('users.weekday_evening', '=', weekday_evening)
             if (weekends) query.where('users.weekends', '=', weekends)
-
+            if (username) query.where('users.username', '!=', username)
             // if (mon_morn) query.where('users.mon_morn', '=', mon_morn)
             // if (mon_aft) query.where('users.mon_aft', '=', mon_aft)
             // if (mon_eve) query.where('users.mon_eve', '=', mon_eve)
@@ -42,7 +42,7 @@ exports.fetchCurrentUser = (username) => {
     return connection
         .select("*")
         .from("users")
-        .where({username})
+        .where({ username })
 }
 
 exports.createNewUser = (newUser) => {
@@ -56,7 +56,7 @@ exports.createNewUser = (newUser) => {
 //, max_ability, hand_preference, min_age, max_age, gender_preference
 exports.updateCurrentUser = (username, distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference) => {
     return connection("users")
-      .where({ username })
-      .update({distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference})
-      .returning("*");
+        .where({ username })
+        .update({ distance, min_ability, max_ability, hand_preference, min_age, max_age, gender_preference })
+        .returning("*");
 }
