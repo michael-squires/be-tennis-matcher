@@ -241,7 +241,7 @@ module.exports = [
     },
     {
         "username": "walton0909@hotmail.com",
-        "first_name": "Mathhew",
+        "first_name": "Mathew",
         "last_name": "Walton",
         "image_url": "https://firebasestorage.googleapis.com/v0/b/tennis-match-b1298.appspot.com/o/walton0909%40hotmail.com.jpg?alt=media&token=66e86144-76a8-47b0-9ce7-a162e1659c73",
         "latitude": "53.808657",
