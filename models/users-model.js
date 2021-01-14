@@ -1,12 +1,12 @@
 const connection = require("../db/data/connection");
 const { use } = require("../routers/usersRouter");
 
-exports.fetchUsers = ({ username, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends }) => {
+exports.fetchUsers = ({ username, gender_preference, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends }) => {
     return connection
         .select("*")
         .from("users")
         .modify((query) => {
-            if (gender) query.where('users.gender', '=', gender)
+            if (gender_preference) query.where('users.gender', '=', gender_preference)
             if (playing_hand) query.where('users.playing_hand', '=', playing_hand)
             if (min_ability) query.where('users.ability', '>=', min_ability)
             if (max_ability) query.where('users.ability', '<=', max_ability)

@@ -2,8 +2,8 @@ const { fetchUsers, fetchCurrentUser, createNewUser, updateCurrentUser } = requi
 const { filterByDistance, filterByAge } = require('../db/utils/data-manipulation')
 
 exports.getUsers = (req, res, next) => {
-    const { username, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends, distance, latitude, longitude, min_age, max_age } = req.query
-    fetchUsers({ username, gender, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends })
+    const { username, gender_preference, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends, distance, latitude, longitude, min_age, max_age } = req.query
+    fetchUsers({ username, gender_preference, playing_hand, min_ability, max_ability, weekday_daytime, weekday_evening, weekends })
         .then((users) => {
             if (distance) {
                 users = users.filter(user => filterByDistance(latitude, longitude, user.latitude, user.longitude, distance))
